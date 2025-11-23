@@ -1,141 +1,171 @@
-// components/sections/Hero.jsx
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Code, LineChart, Database } from 'lucide-react';
+import '@/styles/animations.scss';
+import { ArrowRight, Zap, Rocket, Target } from 'lucide-react';
+
+const HERO_IMAGES = [
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
+  'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&q=80',
+  'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80',
+  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80',
+];
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
-  const floatingElementsRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
-      }
-    };
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if (!floatingElementsRef.current) return;
-      
-      const elements = floatingElementsRef.current.querySelectorAll('.floating-element');
-      
-      elements.forEach((element) => {
-        const speed = element.dataset.speed || 0.05;
-        const x = (window.innerWidth / 2 - e.clientX) * speed;
-        const y = (window.innerHeight / 2 - e.clientY) * speed;
-        
-        element.style.transform = `translateX(${x}px) translateY(${y}px)`;
-      });
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.scrollY;
+        heroRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
+      }
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#4F50FF_1px,transparent_1px)] [background-size:40px_40px]"></div>
-      </div>
-      
-      <div ref={floatingElementsRef} className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div data-speed="0.03" className="floating-element absolute top-[15%] left-[10%] w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-        <div data-speed="0.05" className="floating-element absolute top-[50%] right-[5%] w-96 h-96 bg-[#4F50FF]/10 rounded-full blur-3xl"></div>
-        <div data-speed="0.02" className="floating-element absolute bottom-[10%] left-[30%] w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl"></div>
-        
-        <Code data-speed="0.08" className="floating-element absolute top-[25%] left-[15%] text-emerald-400/20 w-20 h-20" />
-        <Database data-speed="0.06" className="floating-element absolute bottom-[20%] right-[25%] text-[#4F50FF]/20 w-24 h-24" />
-        <LineChart data-speed="0.04" className="floating-element absolute top-[60%] left-[75%] text-emerald-500/20 w-16 h-16" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+      {/* Animated background images */}
+      <div className="absolute inset-0">
+        {HERO_IMAGES.map((img, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-2000 ${
+              idx === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={img}
+              alt="Hero background"
+              fill
+              className="object-cover"
+              priority={idx === 0}
+              quality={90}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+          </div>
+        ))}
       </div>
 
+
+
+      {/* Main content */}
       <div 
         ref={heroRef}
-        className="container mx-auto px-4 py-20 flex flex-col items-center text-center opacity-0 translate-y-10 transition-all duration-1000"
+        className="container mx-auto px-4 py-32 relative z-20"
       >
-        <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm mb-6 text-sm text-white/80">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-2"></span>
-          We're launching our new AI platform
-        </div>
-        
-        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-          <span className="block">Transform Your Ideas Into</span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-[#4F50FF]">
-            Digital Reality
-          </span>
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-white/70 max-w-3xl mb-10">
-          We craft cutting-edge software solutions that drive innovation and deliver 
-          exceptional user experiences for businesses worldwide.
-        </p>
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full backdrop-blur-sm mb-8 hero-badge">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 pulse-dot" />
+            <span className="text-sm text-emerald-400 font-medium">
+              Trusted by Fortune 500 Companies
+            </span>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 mb-16">
-          <Link 
-            href="/contact"
-            className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/20 flex items-center justify-center group"
-          >
-            Start Your Project
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          
-          <Link 
-            href="/portfolio"
-            className="px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-medium rounded-full transition-all duration-300 border border-white/20 hover:border-white/30"
-          >
-            View Our Work
-          </Link>
-        </div>
+          {/* Main headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <span className="block text-white hero-text-1">
+              Enterprise Software
+            </span>
+            <span className="block mt-2 bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 bg-clip-text text-transparent hero-text-2 gradient-shift">
+              That Drives Results
+            </span>
+          </h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-center">
-          <div className="flex flex-col items-center">
-            <span className="text-4xl font-bold text-white mb-1">200+</span>
-            <span className="text-white/60">Projects Completed</span>
+          {/* Subheadline */}
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 hero-text-3">
+            We build scalable, secure applications that transform businesses. 
+            From concept to launch, we deliver excellence.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 hero-buttons">
+            <Link 
+              href="/contact"
+              className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-105"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Start Your Project
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
+
+            <Link 
+              href="/portfolio"
+              className="group relative px-8 py-4 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/20 overflow-hidden transition-all duration-300 hover:border-emerald-400/50 hover:bg-white/10 hover:scale-105"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                View Case Studies
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
-          <div className="flex flex-col items-center">
-            <span className="text-4xl font-bold text-white mb-1">10+</span>
-            <span className="text-white/60">Years Experience</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-4xl font-bold text-white mb-1">50+</span>
-            <span className="text-white/60">Global Clients</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-4xl font-bold text-white mb-1">99%</span>
-            <span className="text-white/60">Client Satisfaction</span>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {[
+              { value: '500+', label: 'Projects Delivered', icon: Target },
+              { value: '15+', label: 'Years Experience', icon: Zap },
+              { value: '200+', label: 'Enterprise Clients', icon: Rocket },
+              { value: '99.8%', label: 'Success Rate', icon: Target },
+            ].map((stat, idx) => (
+              <div 
+                key={idx}
+                className="group relative p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-emerald-400/30 transition-all duration-500 hover:bg-white/10 hover:-translate-y-2 cursor-pointer stat-card"
+                style={{ animationDelay: `${idx * 150}ms` }}
+              >
+                <stat.icon className="w-6 h-6 text-emerald-400 mb-3 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Curved bottom shape */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px]">
+      {/* Fixed Wave SVG */}
+      <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+        <svg 
+          viewBox="0 0 1440 120" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-auto"
+          preserveAspectRatio="none"
+        >
           <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
-            className="fill-white"
-          ></path>
+            d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" 
+            fill="white"
+          />
         </svg>
       </div>
     </section>

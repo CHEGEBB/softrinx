@@ -1,0 +1,261 @@
+// ============================================
+// HERO SECTION ANIMATIONS
+// ============================================
+
+// Pulse dot animation
+.pulse-dot {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  // Badge entrance
+  .hero-badge {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  }
+  
+  // Text stagger animations
+  .hero-text-1 {
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+  }
+  
+  .hero-text-2 {
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+  }
+  
+  .hero-text-3 {
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+  }
+  
+  .hero-buttons {
+    animation: fadeInUp 0.8s ease-out 1s backwards;
+  }
+  
+  // Stat cards animation
+  .stat-card {
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+  
+  // Gradient shift animation for text
+  .gradient-shift {
+    background-size: 200% auto;
+    animation: gradientShift 3s linear infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // ============================================
+  // NAVIGATION ANIMATIONS
+  // ============================================
+  
+  // Hover gradient text effect
+  .hover-gradient-text {
+    position: relative;
+    background: linear-gradient(
+      to right,
+      #ffffff 0%,
+      #ffffff 50%,
+      #10b981 50%,
+      #3b82f6 75%,
+      #a855f7 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 0% center;
+    transition: background-position 0.6s ease;
+  
+    &:hover {
+      background-position: -100% center;
+    }
+  }
+  
+  // Dropdown appear animation
+  .dropdown-appear {
+    animation: dropdownSlide 0.3s ease-out;
+  }
+  
+  @keyframes dropdownSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Dropdown items stagger
+  .dropdown-item {
+    animation: fadeInLeft 0.3s ease-out backwards;
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  // ============================================
+  // HERO SECTION ANIMATIONS
+  // ============================================
+  
+  .hamburger-lines {
+    width: 28px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .hamburger-line {
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: absolute;
+    
+    &.line-1 {
+      top: 0;
+      
+      &.open {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+    
+    &.line-2 {
+      top: 50%;
+      transform: translateY(-50%);
+      
+      &.open {
+        opacity: 0;
+        width: 0;
+      }
+    }
+    
+    &.line-3 {
+      bottom: 0;
+      
+      &.open {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+    }
+  }
+  
+  // Mobile menu slide animation
+  .menu-slide {
+    &.translate-x-0 {
+      .menu-item {
+        animation: slideInRight 0.5s ease-out backwards;
+      }
+      
+      .menu-image {
+        animation: scaleIn 0.6s ease-out 0.2s backwards;
+      }
+      
+      .menu-cta {
+        animation: fadeInUp 0.6s ease-out 0.8s backwards;
+      }
+      
+      .menu-footer {
+        animation: fadeInUp 0.6s ease-out 1s backwards;
+      }
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  // ============================================
+  // UTILITY ANIMATIONS
+  // ============================================
+  
+  // Smooth transitions
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  // Button hover lift
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  // Glow effect on hover
+  .hover-glow {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.4));
+    }
+  }
+  
+  // Responsive animations - reduce motion for accessibility
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }

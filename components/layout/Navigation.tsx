@@ -1,7 +1,6 @@
-// components/layout/Navigation.jsx
 "use client";
 
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -22,12 +21,23 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => setIsOpen(!isOpen);
   
   const handleDropdown = (name: string | null) => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
-  
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -98,21 +108,21 @@ const Navigation = () => {
           </Link>
           
           {/* Desktop Nav */}
-          <div className="hidden lg:flex space-x-8">
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.dropdown ? (
                   <button 
                     onClick={() => handleDropdown(item.name)}
-                    className="flex items-center text-gray-800 hover:text-emerald-600 transition-colors"
+                    className="flex items-center px-4 py-2 text-sm uppercase tracking-wider font-medium text-white hover-gradient-text transition-colors"
                   >
                     {item.name}
-                    <ChevronDown size={18} className={`ml-1 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={16} className={`ml-1 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
                   </button>
                 ) : (
                   <Link 
                     href={item.path}
-                    className="text-gray-800 hover:text-emerald-600 transition-colors"
+                    className="px-4 py-2 text-sm uppercase tracking-wider font-medium text-white hover-gradient-text transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -145,14 +155,14 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Hamburger Toggle for both Mobile and Desktop */}
+          {/* Simple White Hamburger - Always visible */}
           <button 
-            className="p-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+            className="p-2"
             onClick={toggleMenu}
             aria-label="Menu"
           >
-            <Menu size={28} className={`${isOpen ? 'hidden' : 'block'}`} />
-            <X size={28} className={`${isOpen ? 'block' : 'hidden'}`} />
+            <Menu size={28} className={`text-white ${isOpen ? 'hidden' : 'block'}`} />
+            <X size={28} className={`text-white ${isOpen ? 'block' : 'hidden'}`} />
           </button>
         </div>
       </div>
@@ -168,7 +178,7 @@ const Navigation = () => {
             <div className="flex justify-between items-center mb-10">
               <Link href="/" className="flex items-center">
                 <Image 
-                  src="/images/logo.svg" 
+                  src="/images/images/logo3.png" 
                   alt="Softrinx Logo" 
                   width={150} 
                   height={40} 
@@ -184,14 +194,30 @@ const Navigation = () => {
               </button>
             </div>
 
+            {/* Hero Image with Text */}
+            <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-8 menu-image">
+              <Image
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                alt="Team collaboration"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <p className="text-sm text-emerald-400 mb-1">Ready to innovate?</p>
+                <h3 className="text-xl font-bold">Let's Build Together</h3>
+              </div>
+            </div>
+
             <div className="flex flex-col space-y-6 text-2xl font-medium">
-              {navItems.map((item) => (
+              {navItems.map((item, idx) => (
                 <div key={item.name} className="border-b border-gray-100 pb-4">
                   {item.dropdown ? (
                     <div>
                       <button 
                         onClick={() => handleDropdown(item.name)}
-                        className="flex items-center justify-between w-full text-gray-800 hover:text-emerald-600 transition-colors"
+                        className="flex items-center justify-between w-full text-gray-800 hover:text-emerald-600 transition-colors menu-item"
+                        style={{ animationDelay: `${idx * 80}ms` }}
                       >
                         {item.name}
                         <ChevronDown 
@@ -225,7 +251,8 @@ const Navigation = () => {
                   ) : (
                     <Link 
                       href={item.path}
-                      className="block text-gray-800 hover:text-emerald-600 transition-colors"
+                      className="block text-gray-800 hover:text-emerald-600 transition-colors menu-item"
+                      style={{ animationDelay: `${idx * 80}ms` }}
                       onClick={toggleMenu}
                     >
                       {item.name}
