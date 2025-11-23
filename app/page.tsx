@@ -5,6 +5,7 @@ import CaseStudies from '@/components/sections/CaseStudies'
 import Stats from '@/components/sections/Stats'
 import ContactForm from '@/components/sections/ContactForm'
 import Navigation from '@/components/layout/Navigation'
+import About from '@/components/sections/About'
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Stats />
       <Services />
       <Portfolio />
+      <About/>
+
       <CaseStudies />
       <ContactForm />
     </main>
