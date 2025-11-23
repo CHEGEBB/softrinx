@@ -4,10 +4,12 @@ import Portfolio from '@/components/sections/Portfolio'
 import CaseStudies from '@/components/sections/CaseStudies'
 import Stats from '@/components/sections/Stats'
 import ContactForm from '@/components/sections/ContactForm'
+import Navigation from '@/components/layout/Navigation'
 
 export default function Home() {
   return (
     <main>
+      <Navigation/>
       <Hero />
       <Stats />
       <Services />
