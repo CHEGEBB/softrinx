@@ -6,12 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Code, Layout, Smartphone, Database, Cloud, Globe, ChevronRight, Cpu, LineChart } from "lucide-react";
 
-import "../styles/animations.scss";
-
-export const metadata = {
-  title: "Services | Softrinx - Professional Software Development Agency",
-  description: "Explore our comprehensive software development services including web applications, mobile apps, custom software solutions, and enterprise systems.",
-};
+import "@/styles/animations.scss";
 
 export default function ServicesPage() {
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -166,7 +161,7 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-sm uppercase tracking-wider text-primary-600 mb-3">Our Approach</h2>
-              <h3 className="text-4xl font-bold mb-6">We Don't Just Build Software, We Solve Business Problems</h3>
+              <h3 className="text-4xl font-bold mb-6">We Don&apos;t Just Build Software, We Solve Business Problems</h3>
               <p className="text-gray-600 mb-8 text-lg">
                 Our approach goes beyond just writing code. We start by understanding your business goals, user needs, and market challenges. This strategic foundation ensures we build solutions that deliver real business value.
               </p>
@@ -299,7 +294,7 @@ export default function ServicesPage() {
                   </div>
                   <h4 className="text-2xl font-bold text-white mb-4">Interactive Project Demo</h4>
                   <p className="text-gray-300 mb-8 max-w-md mx-auto">
-                    Click to explore a real-world application we've built and see our development approach in action.
+                    Click to explore a real-world application we&apos;ve built and see our development approach in action.
                   </p>
                   <button className="px-6 py-3 bg-white text-primary-900 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                     Launch Demo
@@ -356,7 +351,7 @@ export default function ServicesPage() {
             <h2 className="text-sm uppercase tracking-wider text-primary-600 mb-3">Industry Expertise</h2>
             <h3 className="text-4xl font-bold mb-6">Domain-Specific Knowledge</h3>
             <p className="text-gray-600 text-lg">
-              We've developed deep expertise across various industries, allowing us to understand your specific challenges and opportunities.
+              We&apos;ve developed deep expertise across various industries, allowing us to understand your specific challenges and opportunities.
             </p>
           </div>
           
