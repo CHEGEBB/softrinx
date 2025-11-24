@@ -8,6 +8,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 
 import "../styles/animations.scss";
+import Link from "next/link";
 
 // Define form schema
 const contactFormSchema = z.object({
@@ -241,7 +242,7 @@ export default function ContactPage() {
                         </div>
                         <h4 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h4>
                         <p className="text-gray-600 mb-6">
-                          We've received your message and will get back to you within 24 hours.
+                          We&apos;ve received your message and will get back to you within 24 hours.
                         </p>
                         <button 
                           onClick={() => setIsSubmitted(false)} 
@@ -528,7 +529,7 @@ export default function ContactPage() {
                       
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          What's your timeline?
+                          What&apos;s your timeline?
                         </label>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                           {[
@@ -596,7 +597,7 @@ export default function ContactPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Visit Our Office</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We're always happy to meet in person to discuss your project.
+              We&apos;re always happy to meet in person to discuss your project.
             </p>
           </div>
           
@@ -686,15 +687,21 @@ export default function ContactPage() {
         <div className="container px-4 mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6 max-w-3xl mx-auto">Ready to Transform Your Business with Custom Software?</h2>
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            Let's discuss how we can help you achieve your goals and overcome your challenges.
+            Let&apos;s discuss how we can help you achieve your goals and overcome your challenges.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#contact-form" className="btn-primary px-8 py-4 rounded-lg text-lg font-medium bg-primary-600 hover:bg-primary-700 transition-colors">
               Start Your Project
             </a>
-            <a href="/portfolio" className="btn-secondary px-8 py-4 rounded-lg text-lg font-medium border-2 border-white hover:bg-white hover:text-gray-900 transition-colors">
+              <Link href="/portfolio" className="btn-secondary px-8 py-4 rounded-lg text-lg font-medium border-2 border-white hover:bg-white hover:text-gray-900 transition-colors">
+                See Our Work
+              </Link>
+      
+              <Link   href="/portfolio" className="btn-secondary px-8 py-4 rounded-lg text-lg font-medium border-2 border-white hover:bg-white hover:text-gray-900 transition-colors">
+         
               See Our Work
-            </a>
+              </Link>
+          
           </div>
         </div>
       </section>
