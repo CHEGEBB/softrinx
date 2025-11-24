@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="space-y-6">
             <Link href="/" className="inline-block">
               <Image 
-                src="/images/logo-white.svg" 
+                src="/images/images/logo3.png" 
                 alt="Softrinx Logo" 
                 width={150} 
                 height={40} 
