@@ -44,7 +44,7 @@ const Navigation = () => {
     { name: "About", path: "/about" },
     {
       name: "Pages",
-      path: "",
+      path: "/pages",
       dropdown: [
         { name: "Team", path: "/pages/team" },
         { name: "FAQ", path: "/pages/faq" },
@@ -56,7 +56,7 @@ const Navigation = () => {
       name: "Blog",
       path: "/blog",
       dropdown: [
-        { name: "Latest Posts", path: "/blog" },
+        { name: "Latest Posts", path: "/blog/latest" },
         { name: "Categories", path: "/blog/categories" },
         { name: "Author", path: "/blog/author" }
       ]
