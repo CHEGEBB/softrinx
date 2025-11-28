@@ -1,0 +1,137 @@
+// styles/team.scss
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes beamAnimation {
+    0% {
+      transform: translateX(30%) rotate(35deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateX(30%) rotate(35deg);
+      opacity: 0;
+    }
+  }
+  
+  .team-bg-pattern {
+    background-image: radial-gradient(circle at 10px 10px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 30px 30px;
+  }
+  
+  .team-light-beam {
+    position: absolute;
+    background: linear-gradient(45deg, rgba(72, 255, 175, 0.3), rgba(52, 199, 145, 0));
+    transform: translateX(30%) rotate(35deg);
+    animation: beamAnimation 8s infinite;
+  }
+  
+  .anim-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .anim-element.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .team-title {
+    animation-delay: 0.2s;
+  }
+  
+  .team-subtitle {
+    animation-delay: 0.4s;
+  }
+  
+  .team-card {
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.8s ease,
+                box-shadow 0.4s ease;
+  }
+  
+  .team-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .values-card {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.6s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+  }
+  
+  .values-card.animate-in {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .join-btn {
+    position: relative;
+    overflow: hidden;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    &:hover::after {
+      left: 100%;
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .team-hero h1 {
+      font-size: 3.5rem;
+    }
+    
+    .team-light-beam {
+      width: 100%;
+      opacity: 0.15;
+    }
+  }

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 
-import "../styles/animations.scss";
+import "@/styles/animations.scss";
 import Link from "next/link";
 
 // Define form schema
@@ -24,10 +24,7 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-export const metadata = {
-  title: "Contact Us | Softrinx - Professional Software Development Agency",
-  description: "Get in touch with our team to discuss your project, request a quote, or learn more about our software development services.",
-};
+
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);

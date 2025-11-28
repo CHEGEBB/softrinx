@@ -51,7 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={dmSans.className}>
         {children}
-      </body>
+i      </body>
     </html>
   )
 }
