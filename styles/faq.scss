@@ -1,0 +1,76 @@
+// styles/faq.scss
+.faq-pattern {
+    background-image: 
+      linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%), 
+      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+  
+  .faq-title {
+    animation: slideInFromTop 0.8s ease-out;
+  }
+  
+  .faq-subtitle {
+    animation: slideInFromTop 1s ease-out;
+  }
+  
+  .faq-tabs {
+    animation: fadeIn 1.2s ease;
+  }
+  
+  .faq-answer-visible {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Custom scrollbar for tabs */
+  .faq-tabs::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .faq-tabs::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .faq-tabs::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 10px;
+  }
+  
+  .faq-tabs::-webkit-scrollbar-thumb:hover {
+    background: #0e9f6e;
+  }
