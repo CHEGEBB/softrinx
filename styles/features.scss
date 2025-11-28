@@ -1,0 +1,790 @@
+// ============================================
+// FEATURES PAGE ANIMATIONS - COMPLETE SASS
+// ============================================
+// All animations for features pages (main + subpages)
+// Colors: Emerald & Slate theme
+
+// ============================================
+// MAIN FEATURES PAGE ANIMATIONS
+// ============================================
+
+// Gradient shift animation for hero text
+@keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .features-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  // Badge fade in
+  @keyframes badgeFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .features-badge {
+    animation: badgeFadeIn 0.8s ease-out;
+  }
+  
+  // Hero title entrance
+  @keyframes heroTitleSlide {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .features-hero-title {
+    animation: heroTitleSlide 1s ease-out 0.3s backwards;
+  }
+  
+  .features-hero-subtitle {
+    animation: heroTitleSlide 1s ease-out 0.6s backwards;
+  }
+  
+  .features-hero-cta {
+    animation: heroTitleSlide 1s ease-out 0.9s backwards;
+  }
+  
+  // Stats pulse
+  @keyframes statsPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .features-hero-title + .features-hero-subtitle + .features-stats > div {
+    animation: statsPulse 2s ease-in-out infinite;
+  }
+  
+  // Grid overlay animation
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  
+  .features-grid-overlay {
+    background-image: 
+      linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+  
+  // Card hover effects
+  @keyframes cardFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .features-card:hover {
+    animation: cardFloat 2s ease-in-out infinite;
+  }
+  
+  // Floating elements
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+  
+  @keyframes floatMedium {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(-5deg);
+    }
+  }
+  
+  .features-float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+  
+  .features-float-medium {
+    animation: floatMedium 4s ease-in-out infinite;
+  }
+  
+  // Why cards pulse on hover
+  .features-why-card:hover {
+    animation: cardFloat 1.5s ease-in-out infinite;
+  }
+  
+  // Tech badge hover
+  @keyframes badgePop {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .features-tech-badge:hover {
+    animation: badgePop 0.5s ease;
+  }
+  
+  // CTA background animation
+  @keyframes ctaWave {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .features-cta-animation {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: ctaWave 3s ease-in-out infinite;
+  }
+  
+  // Dots pattern
+  .features-dots-pattern {
+    background-image: radial-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  // ============================================
+  // WEB DEVELOPMENT PAGE ANIMATIONS
+  // ============================================
+  
+  .web-dev-badge {
+    animation: badgeFadeIn 0.8s ease-out;
+  }
+  
+  .web-dev-title {
+    animation: heroTitleSlide 1s ease-out 0.3s backwards;
+  }
+  
+  .web-dev-subtitle {
+    animation: heroTitleSlide 1s ease-out 0.6s backwards;
+  }
+  
+  .web-dev-stats > div {
+    animation: heroTitleSlide 1s ease-out backwards;
+  }
+  
+  .web-dev-stats > div:nth-child(1) {
+    animation-delay: 0.8s;
+  }
+  
+  .web-dev-stats > div:nth-child(2) {
+    animation-delay: 0.9s;
+  }
+  
+  .web-dev-stats > div:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  .web-dev-cta {
+    animation: heroTitleSlide 1s ease-out 1.2s backwards;
+  }
+  
+  // Service cards slide in from left
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .web-dev-service-card {
+    animation: slideInLeft 0.8s ease-out;
+  }
+  
+  // Process cards with scale
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .web-dev-process-card {
+    animation: scaleIn 0.6s ease-out;
+  }
+  
+  // Tech badge glow
+  @keyframes techGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+  }
+  
+  .web-dev-tech-badge:hover {
+    animation: techGlow 1.5s ease-in-out infinite;
+  }
+  
+  // ============================================
+  // MOBILE APPS PAGE ANIMATIONS
+  // ============================================
+  
+  .mobile-badge {
+    animation: badgeFadeIn 0.8s ease-out;
+  }
+  
+  .mobile-hero-title {
+    animation: heroTitleSlide 1s ease-out 0.3s backwards;
+  }
+  
+  .mobile-hero-subtitle {
+    animation: heroTitleSlide 1s ease-out 0.6s backwards;
+  }
+  
+  .mobile-stats > div {
+    animation: heroTitleSlide 0.8s ease-out backwards;
+  }
+  
+  .mobile-stats > div:nth-child(1) { animation-delay: 0.8s; }
+  .mobile-stats > div:nth-child(2) { animation-delay: 0.9s; }
+  .mobile-stats > div:nth-child(3) { animation-delay: 1s; }
+  .mobile-stats > div:nth-child(4) { animation-delay: 1.1s; }
+  
+  .mobile-cta {
+    animation: heroTitleSlide 1s ease-out 1.3s backwards;
+  }
+  
+  // Phone float animation
+  @keyframes phoneFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(2deg);
+    }
+  }
+  
+  .mobile-float-slow {
+    animation: phoneFloat 8s ease-in-out infinite;
+  }
+  
+  // Platform cards scale and rotate
+  @keyframes platformReveal {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(-5deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+  .mobile-platform-card {
+    animation: platformReveal 0.8s ease-out;
+  }
+  
+  // Feature cards slide up
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .mobile-feature-card {
+    animation: slideUp 0.7s ease-out;
+  }
+  
+  // Showcase cards zoom
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .mobile-showcase-card {
+    animation: zoomIn 0.8s ease-out;
+  }
+  
+  // CTA pattern
+  @keyframes patternMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+  
+  .mobile-cta-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+    animation: patternMove 20s linear infinite;
+  }
+  
+  // ============================================
+  // UI/UX DESIGN PAGE ANIMATIONS
+  // ============================================
+  
+  .design-badge {
+    animation: badgeFadeIn 0.8s ease-out;
+  }
+  
+  .design-hero-title {
+    animation: heroTitleSlide 1s ease-out 0.3s backwards;
+  }
+  
+  .design-hero-subtitle {
+    animation: heroTitleSlide 1s ease-out 0.6s backwards;
+  }
+  
+  .design-stats > div {
+    animation: heroTitleSlide 0.8s ease-out backwards;
+  }
+  
+  .design-stats > div:nth-child(1) { animation-delay: 0.8s; }
+  .design-stats > div:nth-child(2) { animation-delay: 0.9s; }
+  .design-stats > div:nth-child(3) { animation-delay: 1s; }
+  .design-stats > div:nth-child(4) { animation-delay: 1.1s; }
+  
+  .design-cta {
+    animation: heroTitleSlide 1s ease-out 1.3s backwards;
+  }
+  
+  // Mouse-following blob animation
+  .design-float-mouse {
+    transition: all 0.3s ease-out;
+  }
+  
+  // Service cards rotate in
+  @keyframes rotateIn {
+    from {
+      opacity: 0;
+      transform: rotate(-10deg) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+  
+  .design-service-card {
+    animation: rotateIn 0.8s ease-out;
+  }
+  
+  // Principle cards pop
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    70% {
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .design-principle-card {
+    animation: popIn 0.6s ease-out;
+  }
+  
+  // Process cards slide
+  .design-process-card {
+    animation: slideUp 0.7s ease-out;
+  }
+  
+  // Showcase cards tilt
+  @keyframes tiltReveal {
+    from {
+      opacity: 0;
+      transform: perspective(1000px) rotateY(-20deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(1000px) rotateY(0deg);
+    }
+  }
+  
+  .design-showcase-card {
+    animation: tiltReveal 0.8s ease-out;
+  }
+  
+  // Mesh gradient animation
+  @keyframes meshGradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .design-mesh-gradient {
+    background: linear-gradient(
+      45deg,
+      rgba(168, 85, 247, 0.1),
+      rgba(236, 72, 153, 0.1),
+      rgba(168, 85, 247, 0.1)
+    );
+    background-size: 200% 200%;
+    animation: meshGradient 10s ease infinite;
+  }
+  
+  // CTA waves
+  @keyframes waves {
+    0% {
+      transform: translateX(-100%) translateY(0);
+    }
+    100% {
+      transform: translateX(100%) translateY(0);
+    }
+  }
+  
+  .design-cta-waves {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    animation: waves 4s ease-in-out infinite;
+  }
+  
+  // ============================================
+  // AI SOLUTIONS PAGE ANIMATIONS
+  // ============================================
+  
+  .ai-badge {
+    animation: badgeFadeIn 0.8s ease-out;
+  }
+  
+  .ai-hero-title {
+    animation: heroTitleSlide 1s ease-out 0.3s backwards;
+  }
+  
+  .ai-hero-subtitle {
+    animation: heroTitleSlide 1s ease-out 0.6s backwards;
+  }
+  
+  .ai-stats > div {
+    animation: heroTitleSlide 0.8s ease-out backwards;
+  }
+  
+  .ai-stats > div:nth-child(1) { animation-delay: 0.8s; }
+  .ai-stats > div:nth-child(2) { animation-delay: 0.9s; }
+  .ai-stats > div:nth-child(3) { animation-delay: 1s; }
+  .ai-stats > div:nth-child(4) { animation-delay: 1.1s; }
+  
+  .ai-cta {
+    animation: heroTitleSlide 1s ease-out 1.3s backwards;
+  }
+  
+  // AI particles floating
+  @keyframes particleFloat {
+    0%, 100% {
+      transform: translate(0, 0);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(10px, -10px);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(-5px, -20px);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(-15px, -10px);
+      opacity: 0.7;
+    }
+  }
+  
+  .ai-particle {
+    animation: particleFloat 8s ease-in-out infinite;
+  }
+  
+  // Service cards slide from right
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .ai-service-card {
+    animation: slideInRight 0.8s ease-out;
+  }
+  
+  // Capability cards bounce
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .ai-capability-card {
+    animation: bounceIn 0.8s ease-out;
+  }
+  
+  // Tech badge pulse
+  @keyframes techPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+  
+  .ai-tech-badge:hover {
+    animation: techPulse 1s ease-in-out infinite;
+  }
+  
+  // Use case cards 3D flip
+  @keyframes flip3D {
+    from {
+      opacity: 0;
+      transform: perspective(1000px) rotateX(-30deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(1000px) rotateX(0deg);
+    }
+  }
+  
+  .ai-use-case-card {
+    animation: flip3D 0.8s ease-out;
+  }
+  
+  // Grid pattern
+  @keyframes gridPulse {
+    0%, 100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+  
+  .ai-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridPulse 4s ease-in-out infinite;
+  }
+  
+  // Circuit board pattern for CTA
+  @keyframes circuitFlow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+  
+  .ai-cta-circuit {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.05) 20px,
+        rgba(255, 255, 255, 0.05) 21px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.05) 20px,
+        rgba(255, 255, 255, 0.05) 21px
+      );
+    animation: circuitFlow 30s linear infinite;
+  }
+  
+  // ============================================
+  // SHARED UTILITIES & RESPONSIVE
+  // ============================================
+  
+  // Pulse animation for important elements
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  .pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  // Spin animation
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spin {
+    animation: spin 2s linear infinite;
+  }
+  
+  // Fade in animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  // Mobile responsiveness
+  @media (max-width: 768px) {
+    // Reduce animation intensity on mobile
+    .features-card,
+    .web-dev-service-card,
+    .mobile-platform-card,
+    .design-service-card,
+    .ai-service-card {
+      animation-duration: 0.5s;
+    }
+    
+    // Disable some heavy animations on mobile
+    .features-float-slow,
+    .features-float-medium,
+    .mobile-float-slow {
+      animation: none;
+    }
+    
+    // Simplify particle animations
+    .ai-particle {
+      animation-duration: 4s;
+    }
+  }
+  
+  // Reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  // ============================================
+  // HOVER STATES & INTERACTIONS
+  // ============================================
+  
+  // Universal card hover effect
+  .features-card,
+  .web-dev-service-card,
+  .mobile-platform-card,
+  .design-service-card,
+  .ai-service-card {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  
+  // Button hover effects
+  a,
+  button {
+    transition: all 0.3s ease;
+  }
+  
+  // Smooth scroll behavior
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  // ============================================
+  // END OF FEATURES SASS
+  // ============================================
