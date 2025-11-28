@@ -1,0 +1,110 @@
+// styles/testimonials.scss
+.testimonials-pattern {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%), 
+                      linear-gradient(225deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%), 
+                      linear-gradient(315deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%), 
+                      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
+    background-size: 60px 60px;
+  }
+  
+  .testimonial-cta-pattern {
+    background-image: radial-gradient(circle at 10px 10px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 30px 30px;
+  }
+  
+  .testimonials-title {
+    animation: fadeUp 0.8s ease-out;
+  }
+  
+  .testimonials-subtitle {
+    animation: fadeUp 1s ease-out;
+  }
+  
+  .testimonial-card {
+    animation: fadeIn 1.2s ease-out;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #10b981, #3b82f6);
+    }
+  }
+  
+  .stat-card {
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+  
+  .case-study-card {
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+  
+  .case-study-card:nth-child(1) { animation-delay: 0.1s; }
+  .case-study-card:nth-child(2) { animation-delay: 0.3s; }
+  .case-study-card:nth-child(3) { animation-delay: 0.5s; }
+  
+  .client-logos {
+    .logo-item {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    @for $i from 1 through 6 {
+      .logo-item:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+  
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Counter animation */
+  .counter {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(to right, #10b981, #3b82f6);
+      border-radius: 3px;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      &::before {
+        width: 100%;
+        height: 5px;
+      }
+    }
+  }
