@@ -34,67 +34,67 @@ export default function TeamPage() {
   const teamMembers = [
     {
       id: 1,
-      name: "Alexander Mitchell",
+      name: "Clint Simiyu",
       role: "Founder & CEO",
-      bio: "With over 15 years of experience in software development, Alex leads our vision and strategic direction.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500",
+      bio: "With over 5 years of experience in software development, Clint leads our vision and strategic direction.",
+      image: "/images/images/simiyu.jpg",
       social: {
-        linkedin: "https://linkedin.com",
+        linkedin: "https://linkedin.com/in/clint-simiyu/",
         twitter: "https://twitter.com",
-        github: "https://github.com",
-        email: "alex@softrinx.com"
+        github: "https://github.com/Clint171",
+        email: "clintsimiyu004@gmail.com"
       }
     },
     {
       id: 2,
-      name: "Sophia Chen",
+      name: "Baruk Ali",
       role: "CTO",
-      bio: "Sophia oversees our technical strategy and ensures we're using the latest technologies to deliver exceptional results.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500",
+      bio: "Baruk oversees our technical strategy and ensures we're using the latest technologies to deliver exceptional results.",
+      image: "/images/images/baruk.jpg",
       social: {
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com",
-        github: "https://github.com",
-        email: "sophia@softrinx.com"
+        linkedin: "https://www.linkedin.com/in/mohammed-ali-mbaruk-56785639b",
+        twitter: "https://x.com/Baruk_KE",
+        github: "https://github.com/Baruk1-netizen",
+        email: "baruk.developer@gmail.com"
       }
     },
     {
       id: 3,
-      name: "James Wilson",
+      name: "Walter Onyango",
       role: "Lead Developer",
-      bio: "James heads our development team, architecting robust solutions that meet the complex needs of our enterprise clients.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500",
+      bio: "Walter heads our development team, architecting robust solutions that meet the complex needs of our enterprise clients.",
+      image: "/images/images/walter.jpg",
       social: {
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com",
-        github: "https://github.com",
-        email: "james@softrinx.com"
+        linkedin: "https://linkedin.com/in/walter-onyango",
+        twitter: "https://x.com/taya_dev",
+        github: "https://github.com/waltertaya",
+        email: "taya.developer@gmail.com"
       }
     },
     {
       id: 4,
-      name: "Olivia Martinez",
+      name: "Brian Chege",
       role: "UX/UI Director",
-      bio: "Olivia ensures our applications not only function flawlessly but also provide intuitive and engaging user experiences.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500",
+      bio: "Brian ensures our applications not only function flawlessly but also provide intuitive and engaging user experiences.",
+      image: "/images/images/chege.jpg",
       social: {
         linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com",
-        github: "https://github.com",
-        email: "olivia@softrinx.com"
+        twitter: "https://x.com/https://twitter.com/chegephil24",
+        github: "https://github.com/CHEGEBB/CHEGEBB",
+        email: "chegephil24@gmail.com"
       }
     },
     {
       id: 5,
-      name: "Daniel Kim",
+      name: "Samwel Njuguna",
       role: "AI Solutions Architect",
-      bio: "Daniel leads our AI initiatives, implementing cutting-edge machine learning solutions for our enterprise clients.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500",
+      bio: "Samwel leads our AI initiatives, implementing cutting-edge machine learning solutions for our enterprise clients.",
+      image: "/images/images/samwel.jpg",
       social: {
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com",
-        github: "https://github.com",
-        email: "daniel@softrinx.com"
+        linkedin: "https://www.linkedin.com/in/samwel-njuguna/",
+        twitter: "https://x.com/Njuguna128801",
+        github: "https://github.com/lewmas9152",
+        email: "samwelnjuguna190@gmail.com"
       }
     },
     {
@@ -201,21 +201,21 @@ export default function TeamPage() {
       <section ref={sectionRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-4 anim-element">Leadership Team</h2>
+            <h2 className="text-4xl font-bold mb-4 anim-element"> Team</h2>
             <div className="w-20 h-1 bg-emerald-500 mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 anim-element">
               Meet the visionaries who drive our company forward with expertise, passion, and innovation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.slice(0, 4).map((member, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.slice(0, 5).map((member, index) => (
               <div 
                 key={member.id} 
                 className="team-card rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl anim-element"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-100 overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -277,72 +277,21 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Extended Team Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-4 anim-element">Expert Team</h2>
-            <div className="w-20 h-1 bg-emerald-500 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 anim-element">
-              The talented specialists who bring technical excellence to every project we undertake.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.slice(4).map((member, index) => (
-              <div 
-                key={member.id} 
-                className="team-card rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl anim-element"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="relative h-80 overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                    <div className="flex space-x-3">
-                      <a href={member.social.linkedin} className="p-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500 transition-colors">
-                        <Linkedin size={18} />
-                      </a>
-                      <a href={member.social.twitter} className="p-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500 transition-colors">
-                        <Twitter size={18} />
-                      </a>
-                      <a href={member.social.github} className="p-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500 transition-colors">
-                        <Github size={18} />
-                      </a>
-                      <a href={`mailto:${member.social.email}`} className="p-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500 transition-colors">
-                        <Mail size={18} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Join Our Team Section */}
       <section className="py-20 bg-gradient-to-r from-emerald-600 to-blue-500 relative overflow-hidden">
         <div className="absolute inset-0 pattern-dots opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-6 anim-element">Join Our Team</h2>
-            <p className="text-xl text-white/90 mb-8 anim-element">
+            <h2 className="text-4xl font-bold text-white mb-6 ">Join Our Team</h2>
+            <p className="text-xl text-white/90 mb-8 ">
               We're always looking for talented individuals who are passionate about technology and innovation.
               Check out our current openings and become part of our success story.
             </p>
             <a 
               href="/careers" 
-              className="inline-flex items-center px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl anim-element join-btn"
+              className="inline-flex items-center px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl  join-btn"
             >
               View Open Positions
             </a>
